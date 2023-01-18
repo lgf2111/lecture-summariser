@@ -1,0 +1,29 @@
+{% extends 'my_app/base.html' %}
+
+{% load static %}
+{% block content %}
+<main class="container  rounded shadow p-5 d-flex">
+    <div class="col-6 p-3">
+        <video id="video" style="width:100%;" autoplay controls>
+            <source id="source" type="video/mp4">
+        </video>
+        <form enctype="multipart/form-data" id="form">
+            {% csrf_token %}
+            <div class="form-group my-2">
+                <input class="form-control" type="file" name="video" id="video-input">
+            </div>
+            <input type="submit" class="btn btn-primary mt-1" value="Upload video">
+        </form>
+    </div>
+    <div class="vl"></div>
+    <div class="col-6 p-3 position-relative">
+        <p class="text-light" id="text">Upload your video to begin!</p>
+        <div class="px-griditem position-absolute">
+            <div id="qt-loading-qtload002" class="qt-loading">
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static '/js/home.js' %}"></script>
+</main>
+{% endblock content %}
